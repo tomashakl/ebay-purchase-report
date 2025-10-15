@@ -104,14 +104,13 @@ You can create your configuration file visually — no coding required.
 
 ## 🪪 License
 
-**MIT License** — you can freely use, modify, and redistribute this project, provided the copyright notice remains.  
-See the file [LICENSE](LICENSE) for full text.
+**MIT License © 2025 Tomáš Hakl**  
+You may freely use, modify, and redistribute this project, provided the copyright notice remains.  
+See the file [LICENSE](LICENSE) for full license text.
 
 ---
 
 ## 🙌 Credits
 
-Created as an open, safe template for collectors and developers who want to analyze their eBay purchase history without exposing any personal data.  
-Replace `{{AUTHOR_NAME}}` with your name or organization if you fork this repository.
-
----
+Created by **Tomáš Hakl** as an open, safe template for collectors and developers who want to analyze their eBay purchase history without exposing any personal data.  
+Feel free to fork and adapt it for your own workflow.
