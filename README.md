@@ -1,13 +1,16 @@
 # 🧾 eBay Purchase Report (public, config-driven)
 
-This repository contains a **public, universal** tool to export your eBay Purchase History for a given year into **CSV** and **HTML**.  
-It stores **no personal data** and is safe to publish as a template. Users provide their own session by logging in manually in the opened browser window.
+## 🔍 About this project
+
+This repository contains a **universal, public Python tool** for exporting your **eBay Purchase History** (filtered by year) into **CSV** and **HTML** reports.  
+It is designed to be **privacy-safe**, easy to configure, and fully reusable — no personal credentials or API keys are stored.  
+Ideal for collectors, analysts, or resellers who want to keep a local record of their purchases.
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
-1. Install Python 3.10+ and Google Chrome.
+1. Install **Python 3.10+** and **Google Chrome**.
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
@@ -19,52 +22,96 @@ It stores **no personal data** and is safe to publish as a template. Users provi
    ```
    When the browser opens, **log in to eBay**, open **Purchase history**, select the desired year, and press **Enter** in the terminal.
 
-> No credentials are stored in this repo. If desired, you can set env vars like `EBAY_YEAR=2024` or `HEADLESS=true`.
+> 🛡️ The tool does not use or store any credentials. You log in manually inside the opened Chrome window.
 
 ---
 
-## Config
+## ⚙️ Config
 
-- The script reads `config.yaml` or `config.json` if present.
-- CLI flags override config values.
-- Supported keys:
-  - `year` (int) — target year (required unless passed via CLI/ENV)
-  - `site` (`co.uk` or `com`) — eBay domain (default: `co.uk`)
-  - `headless` (bool)
-  - `max_pages` (int, default: 800)
-  - `sleep` (float, default: 2.0)
-  - `jitter` (list of two floats, default: `[0.5, 1.2]`)
-  - `lang` (string, default: `en-GB,en-US,cs-CZ`)
+The script reads **`config.yaml`** or **`config.json`** if present in the same folder.  
+Command-line arguments override values from the config file.
 
-Use the local **Config Generator** page to produce a config file offline: `config_generator.html` (nothing is uploaded anywhere).
+**Supported keys:**
+- `year` *(int)* — target year (required unless passed via CLI/ENV)
+- `site` *(`co.uk` or `com`)* — eBay domain (default: `co.uk`)
+- `headless` *(bool)* — run Chrome invisibly
+- `max_pages` *(int, default: 800)*
+- `sleep` *(float, default: 2.0)* — pause between pages
+- `jitter` *(list of two floats, default: `[0.5, 1.2]`)*
+- `lang` *(string, default: `en-GB,en-US,cs-CZ`)*
 
----
-
-## Outputs
-
-- `ebay_purchases_<YEAR>.csv` — clean CSV
-- `ebay_purchases_<YEAR>.html` — simple HTML table
-- `debug_purchase_page_<YEAR>_p1.html` — first page dump for parser testing
-
-Columns: `seller`, `item_title`, `order_total`, `currency`, `order_number`
+You can also use environment variables:
+```
+EBAY_YEAR=2024
+HEADLESS=true
+```
 
 ---
 
-## Security & Privacy
+## 🧩 How to Use the Config Generator
 
-- No passwords or personal data in code or repo.
-- Prefer manual login in the opened browser window (recommended).
-- If you use credentials, store them in an OS keychain or environment variables — **never commit them**.
-- Add exports to `.gitignore` (included by default) to avoid committing private data.
+You can create your configuration file visually — no coding required.
+
+1. Open **`config_generator.html`** in your web browser (double-click it).  
+   It runs locally — nothing is uploaded or sent online.
+2. Fill in your desired values:
+   - Author name (optional)
+   - Year (e.g. `2024`)
+   - eBay domain (`co.uk` or `com`)
+   - Whether to run in *headless* mode
+   - Max pages to fetch (default: 800)
+3. Click **“Download config.yaml”** or **“Download config.json”**.
+4. Save the file in the same directory as the script.
+5. Run:
+   ```bash
+   python ebay_purchases_list_only.py
+   ```
+   The script will automatically detect and use your config file.
+
+> 💡 Tip: You can keep both `config.yaml` and `config.json` for different setups — the script automatically picks the first one it finds.
 
 ---
 
-## License
+## 📊 Outputs
 
-MIT — see `LICENSE`.
+- `ebay_purchases_<YEAR>.csv` — clean CSV file for Excel or Sheets  
+- `ebay_purchases_<YEAR>.html` — formatted HTML table  
+- `debug_purchase_page_<YEAR>_p1.html` — first-page dump for offline parser testing  
+
+**Columns:** `seller`, `item_title`, `order_total`, `currency`, `order_number`
 
 ---
 
-## Credits
+## 🔒 Security & Privacy
 
-Based on public parsing and Selenium automation patterns. Replace `{{AUTHOR_NAME}}` with your name or organization in this README if you wish.
+- No passwords or sensitive data are used or stored.
+- Manual login is performed inside your Chrome session.
+- Safe for public or collaborative use.
+- The `.gitignore` file already excludes output files and config data, so they won’t be pushed to GitHub.
+
+---
+
+## 🧠 Technology Stack
+
+- **Python 3.10+**
+- **Selenium**
+- **WebDriver Manager**
+- **BeautifulSoup4 + lxml**
+- **pandas**
+- *(optional)* **PyYAML** – for reading YAML configs
+
+---
+
+## 🪪 License
+
+**MIT License** — you can freely use, modify, and redistribute this project, provided the copyright notice remains.  
+See the file [LICENSE](LICENSE) for full text.
+
+---
+
+## 🙌 Credits
+
+Created as an open, safe template for collectors and developers who want to analyze their eBay purchase history without exposing any personal data.  
+Replace `{{AUTHOR_NAME}}` with your name or organization if you fork this repository.
+
+---
