@@ -1,0 +1,9 @@
+# Example config for ebay-purchase-report (public version)
+year: 2024
+site: co.uk
+headless: false
+max_pages: 800
+sleep: 2.0
+jitter: [0.5, 1.2]
+lang: "en-GB,en-US,cs-CZ"
+# Do not store passwords here. Prefer manual login during run.

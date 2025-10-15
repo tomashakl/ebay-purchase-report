@@ -1,0 +1,6 @@
+selenium
+webdriver-manager
+pandas
+beautifulsoup4
+lxml
+PyYAML==6.0.2  # optional, used if config.yaml is present
